@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center" id="top-bar">
+			<h1>EAT A BURGER!</h1>
+		</div>
+		
+		<div class="col-xs-6 text-center" class="task">
+			<div class="row">
+<!--				looping through burger data-->
+				    {{#each burger_data}}
+					{{#unless this.devoured}}
+<!--				for each burger data it will run the code below-->
+				<div class="col-xs-9 text-center">
+					<pre>{{this.id}}. {{this.burger_name}}</pre>
+				</div>
+<!--				it will create button that will send .id back to server-->
+			<div class="col-xs-3 text-center">
+				<form method="POST" action="/burgers/update?_method=PUT"
+					  class="button-size">
+					<input type="hidden" name="buger_id" type="text" value={{this.id}}>
+					<br>
+					<br>
+					<button type="submit" class="btn btn-dafault">Devour IT!</button>
+				</form>
+			</div>
+				
+				{{/unless}}
+			    {{/each}}
+				
+			</div>
+		</div>
+	</div>
+</div>
